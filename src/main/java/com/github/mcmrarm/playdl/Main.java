@@ -21,7 +21,7 @@ public class Main {
         String output = pkg + ".apk";
         
         if(args.length > 5) output = args[5];
-        
+
         //TODO: Handle architecture selection and/or android_id from checkin
         /* 
         File aIdFile = new File("android_id.txt");
@@ -54,8 +54,6 @@ public class Main {
         lmgr.setEmail(email);
         lmgr.login(pass, DeviceInfo.androidId);
 
-        //System.out.print("Package name: ");
-        //String pkg = reader.readLine();
         App app = new App(lmgr, pkg);
         app.download(app.deliver(), output);
     }
