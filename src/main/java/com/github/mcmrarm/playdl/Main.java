@@ -10,18 +10,21 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, LoginManager.LoginException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("Email: ");
-        String email = reader.readLine();
-        System.out.print("Password: ");
-        String pass = reader.readLine();
-
-        System.out.print("Language [en]: ");
-        DeviceInfo.lang = reader.readLine();
-        if (DeviceInfo.lang.equals("")) {
-            DeviceInfo.lang = "en";
-        }
-
+        
+        //TODO: Handle errors in a better way
+        //TODO: Use a optget manager
+        
+        String email = args[0];
+        String pass = args[1];
+        DeviceInfo.lang = args[2];
+        DeviceInfo.androidId = args[3];
+        String pkg = args[4];
+        String output = pkg + ".apk";
+        
+        if(args.length > 5) output = args[5];
+        
+        //TODO: Handle architecture selection and/or android_id from checkin
+        /* 
         File aIdFile = new File("android_id.txt");
         if (aIdFile.exists()) {
             DeviceInfo.androidId = new BufferedReader(new FileReader(aIdFile)).readLine();
@@ -45,21 +48,16 @@ public class Main {
             writer.write(aId + "\n");
             writer.flush();
             writer.close();
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+        */
 
         LoginManager lmgr = new LoginManager("androidmarket", "com.android.vending");
         lmgr.setEmail(email);
         lmgr.login(pass, DeviceInfo.androidId);
 
-        System.out.print("Package name: ");
-        String pkg = reader.readLine();
+        //System.out.print("Package name: ");
+        //String pkg = reader.readLine();
         App app = new App(lmgr, pkg);
-        app.download(app.deliver(), pkg + app.versionCode + ".apk");
+        app.download(app.deliver(), output);
     }
 }
