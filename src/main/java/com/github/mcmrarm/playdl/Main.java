@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, LoginManager.LoginException {
-        
         //TODO: Handle errors in a better way
         //TODO: Use a optget manager
         
