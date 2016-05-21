@@ -7,7 +7,7 @@ java -jar gplaydl.jar <email> <password> <lang> <android_id> <pkg> [output_path]
 ```
 ## Download:
 You can download the cli compiled version here:
-https://h4ng3r.github.io/google_play_downloader/playdl.jar
+https://github.com/h4ng3r/google_play_downloader/blob/gh-pages/gplaydl.jar
 
 # Google Play app downloader [MCMrARM]
 This java app allows you to download Google Play applications, allowing you to select if you want to download the x86 or arm variant of the app. It is hugely based on https://github.com/Akdeniz/google-play-crawler, and support for downloading paid apps is based on https://github.com/Akdeniz/google-play-crawler/pull/52. Huge thanks to those people!
